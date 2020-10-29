@@ -4,10 +4,9 @@ import com.example.demo.exception.NotEnoughtTrainers;
 import com.example.demo.model.Group;
 import com.example.demo.model.Trainee;
 import com.example.demo.model.Trainer;
-import com.example.demo.repository.GroupRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -16,12 +15,14 @@ public class GroupService {
     private final AtomicLong traineeIdSeq = new AtomicLong();
     private final TraineeService traineeService;
     private final TrainerService trainerService;
-    private final GroupRepository groupRepository;
 
-    public GroupService(TraineeService traineeService, TrainerService trainerService, GroupRepository groupRepository) {
+    public GroupService(TraineeService traineeService, TrainerService trainerService) {
         this.traineeService = traineeService;
         this.trainerService = trainerService;
-        this.groupRepository = groupRepository;
+    }
+
+    public List<Group> getAllGroups() {
+        return Arrays.asList(separateGroups().clone());
     }
 
     public Group[] separateGroups() {
