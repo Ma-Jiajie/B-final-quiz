@@ -24,7 +24,7 @@ public class TrainerController {
     @GetMapping
     public List<TrainerResponseDTO> getTrainersByGrouped(@RequestParam(name = "grouped", required = false) Boolean grouped) {
         List<Trainer> trainers = trainerService.getTrainersByGrouped(grouped);
-        return toTrainerResponseDTOS(trainers);
+        return trainerService.toTrainerResponseDTOS(trainers);
     }
 
     @PostMapping
@@ -41,11 +41,5 @@ public class TrainerController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTrainerById(@PathVariable Long id) {
         trainerService.deleteTrainer(id);
-    }
-
-    private List<TrainerResponseDTO> toTrainerResponseDTOS(List<Trainer> trainers) {
-        List<TrainerResponseDTO> trainerResponseDTOS = new ArrayList<>();
-        trainers.forEach(trainer -> trainerResponseDTOS.add(new TrainerResponseDTO(trainer.getId(), trainer.getName())));
-        return trainerResponseDTOS;
     }
 }

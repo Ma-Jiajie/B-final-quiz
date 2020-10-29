@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.exception.ErrorResult;
+import com.example.demo.exception.NotEnoughtTrainers;
 import com.example.demo.exception.TraineeNotFoundException;
 import com.example.demo.exception.TrainerNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
@@ -27,6 +27,12 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResult> handle(TrainerNotFoundException ex) {
         ErrorResult errorResult = new ErrorResult(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
+    }
+
+    @ExceptionHandler(NotEnoughtTrainers.class)
+    public ResponseEntity<ErrorResult> handle(NotEnoughtTrainers ex) {
+        ErrorResult errorResult = new ErrorResult(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

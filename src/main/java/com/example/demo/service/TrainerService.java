@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
 import com.example.demo.controller.requestdto.TrainerRequestDTO;
+import com.example.demo.controller.responsedto.TrainerResponseDTO;
 import com.example.demo.exception.TrainerNotFoundException;
 import com.example.demo.model.Trainer;
 import com.example.demo.repository.TrainerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -43,5 +45,11 @@ public class TrainerService {
 
     public List<Trainer> getAllTrainers() {
         return trainerRepository.findAll();
+    }
+
+    public List<TrainerResponseDTO> toTrainerResponseDTOS(List<Trainer> trainers) {
+        List<TrainerResponseDTO> trainerResponseDTOS = new ArrayList<>();
+        trainers.forEach(trainer -> trainerResponseDTOS.add(new TrainerResponseDTO(trainer.getId(), trainer.getName())));
+        return trainerResponseDTOS;
     }
 }
