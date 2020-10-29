@@ -3,6 +3,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -19,7 +20,12 @@ public class Group {
     private String name;
 
     @OneToMany
-    private List<Trainer> trainers;
+    private List<Trainer> trainers = new ArrayList<>();
     @OneToMany
-    private List<Trainee> trainees;
+    private List<Trainee> trainees = new ArrayList<>();
+
+    public Group(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
