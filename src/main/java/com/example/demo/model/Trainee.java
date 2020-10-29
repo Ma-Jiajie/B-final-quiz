@@ -25,9 +25,7 @@ public class Trainee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotNull(message = "name should not be empty")
     private String name;
-    @JsonIgnore
     private Boolean grouped;
 }

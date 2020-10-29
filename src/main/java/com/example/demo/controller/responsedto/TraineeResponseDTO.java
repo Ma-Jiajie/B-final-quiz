@@ -1,15 +1,16 @@
 package com.example.demo.controller.responsedto;
 
-import com.example.demo.model.Trainee;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TraineesResponse {
-    private List<Trainee> trainees;
+public class TraineeResponseDTO {
+    private Long id;
+    @NotNull(message = "name should not be empty")
+    private String name;
 }
