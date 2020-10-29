@@ -4,6 +4,7 @@ import com.example.demo.controller.responsedto.GroupResponseDTO;
 import com.example.demo.model.Group;
 import com.example.demo.service.GroupService;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/groups")
 @Validated
+@CrossOrigin
 public class GroupController {
     private final GroupService groupService;
 
