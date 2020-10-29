@@ -40,4 +40,8 @@ public class TrainerService {
         if(gettrainerByid(id) == null) throw new TrainerNotFoundException("Trainer is not Existing");
         trainerRepository.deleteById(id);
     }
+
+    public List<Trainer> getAllTrainers() {
+        return trainerRepository.findAll();
+    }
 }

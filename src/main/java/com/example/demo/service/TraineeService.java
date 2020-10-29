@@ -40,4 +40,8 @@ public class TraineeService {
         if(getTraineeByid(id) == null) throw new TraineeNotFoundException("Trainee is not Existing");
         traineeRepository.deleteById(id);
     }
+
+    public List<Trainee> getAllTrainees() {
+        return traineeRepository.findAll();
+    }
 }
