@@ -19,15 +19,9 @@ public class Group {
     @NotEmpty(message = "name should not be empty")
     private String name;
 
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Trainer> trainers = new ArrayList<>();
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Trainee> trainees = new ArrayList<>();
 
     public Group(Long id, String name) {
