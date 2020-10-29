@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class Trainer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

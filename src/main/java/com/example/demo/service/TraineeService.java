@@ -37,7 +37,7 @@ public class TraineeService {
     }
 
     public void deleteTrainee(Long id) {
-        if(getTraineeByid(id) == null) throw new TraineeNotFoundException("User is not Existing");
+        if(getTraineeByid(id) == null) throw new TraineeNotFoundException("Trainee is not Existing");
         traineeRepository.deleteById(id);
     }
 }

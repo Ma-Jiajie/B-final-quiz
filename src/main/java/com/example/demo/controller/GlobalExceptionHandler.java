@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.exception.ErrorResult;
 import com.example.demo.exception.TraineeNotFoundException;
+import com.example.demo.exception.TrainerNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -18,7 +19,12 @@ import java.util.Set;
 public class GlobalExceptionHandler {
     @ExceptionHandler(TraineeNotFoundException.class)
     public ResponseEntity<ErrorResult> handle(TraineeNotFoundException ex) {
-        String[] errorWithStatus = HttpStatus.NOT_FOUND.toString().split(" ");
+        ErrorResult errorResult = new ErrorResult(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
+    }
+
+    @ExceptionHandler(TrainerNotFoundException.class)
+    public ResponseEntity<ErrorResult> handle(TrainerNotFoundException ex) {
         ErrorResult errorResult = new ErrorResult(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResult);
     }

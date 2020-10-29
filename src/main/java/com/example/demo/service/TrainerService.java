@@ -36,8 +36,8 @@ public class TrainerService {
         return trainerRepository.getOneById(id);
     }
 
-    public void deletetrainer(Long id) {
-        if(gettrainerByid(id) == null) throw new TrainerNotFoundException("User is not Existing");
+    public void deleteTrainer(Long id) {
+        if(gettrainerByid(id) == null) throw new TrainerNotFoundException("Trainer is not Existing");
         trainerRepository.deleteById(id);
     }
 }
