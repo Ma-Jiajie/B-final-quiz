@@ -1,13 +1,12 @@
 package com.example.demo.controller;
 
+import com.example.demo.controller.requestdto.TraineeRequestDTO;
 import com.example.demo.controller.responsedto.TraineeResponseDTO;
 import com.example.demo.model.Trainee;
 import com.example.demo.service.TraineeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,15 @@ public class TraineeController {
         return toTraineeResponseDTOS(trainees);
     }
 
-
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public TraineeResponseDTO createTrainee(@RequestBody TraineeRequestDTO traineeRequestDTO) {
+        Trainee trainee = traineeService.createTrainee(traineeRequestDTO);
+        return new TraineeResponseDTO(
+                trainee.getId(),
+                trainee.getName()
+        );
+    }
 
     private List<TraineeResponseDTO> toTraineeResponseDTOS(List<Trainee> trainees) {
         List<TraineeResponseDTO> traineeResponseDTOS = new ArrayList<>();
