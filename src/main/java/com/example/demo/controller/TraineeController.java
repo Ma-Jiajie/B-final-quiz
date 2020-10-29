@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class TraineeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TraineeResponseDTO createTrainee(@RequestBody TraineeRequestDTO traineeRequestDTO) {
+    public TraineeResponseDTO createTrainee(@RequestBody @Valid TraineeRequestDTO traineeRequestDTO) {
         Trainee trainee = traineeService.createTrainee(traineeRequestDTO);
         return new TraineeResponseDTO(
                 trainee.getId(),

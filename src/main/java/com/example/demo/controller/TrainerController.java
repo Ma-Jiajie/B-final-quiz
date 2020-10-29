@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class TrainerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TrainerResponseDTO createTrainer(@RequestBody TrainerRequestDTO trainerRequestDTO) {
+    public TrainerResponseDTO createTrainer(@RequestBody @Valid TrainerRequestDTO trainerRequestDTO) {
         Trainer trainer = trainerService.createTrainer(trainerRequestDTO);
         return new TrainerResponseDTO(
                 trainer.getId(),

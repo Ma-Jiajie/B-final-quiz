@@ -17,7 +17,7 @@ public class Trainee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull(message = "name should not be empty")
+    @NotNull(message = "name should not be null")
     private String name;
     private Boolean grouped;
 }
