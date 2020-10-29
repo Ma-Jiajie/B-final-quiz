@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.controller.requestdto.TraineeRequestDTO;
+import com.example.demo.exception.TraineeNotFoundException;
 import com.example.demo.model.Trainee;
 import com.example.demo.repository.TraineeRepository;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,14 @@ public class TraineeService {
 
         traineeRepository.save(trainee);
         return trainee;
+    }
+
+    public Trainee getTraineeByid(Long id) {
+        return traineeRepository.getOneById(id);
+    }
+
+    public void deleteTrainee(Long id) {
+        if(getTraineeByid(id) == null) throw new TraineeNotFoundException("User is not Existing");
+        traineeRepository.deleteById(id);
     }
 }

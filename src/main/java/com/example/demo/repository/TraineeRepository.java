@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface TraineeRepository extends JpaRepository<Trainee,Long>{
     List<Trainee> getAllByGrouped(Boolean grouped);
+    Trainee getOneById(Long id);
 }
