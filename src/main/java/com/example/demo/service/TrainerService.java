@@ -52,4 +52,8 @@ public class TrainerService {
         trainers.forEach(trainer -> trainerResponseDTOS.add(new TrainerResponseDTO(trainer.getId(), trainer.getName())));
         return trainerResponseDTOS;
     }
+
+    public void updateGrouped(Long id) {
+        trainerRepository.updateGrouped(id);
+    }
 }

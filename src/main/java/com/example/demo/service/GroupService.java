@@ -45,11 +45,14 @@ public class GroupService {
         for(int trainerIndex=0, groupIndex=0; trainerIndex<groupSize*2; trainerIndex+=2 ,groupIndex++) {
             groups[groupIndex].getTrainers().add(trainers.get(trainerIndex));
             groups[groupIndex].getTrainers().add(trainers.get(trainerIndex+1));
+            trainerService.updateGrouped(trainers.get(trainerIndex).getId());
+            trainerService.updateGrouped(trainers.get(trainerIndex+1).getId());
         }
         for(int groupIndex=0, traineeIndex=0; traineeIndex < trainees.size(); traineeIndex++, groupIndex++) {
             Collections.shuffle(trainees);
             if(groupIndex == groupSize) groupIndex=0;
             groups[groupIndex].getTrainees().add(trainees.get(traineeIndex));
+            traineeService.updateGrouped(trainees.get(traineeIndex).getId());
         }
 
         return groups;

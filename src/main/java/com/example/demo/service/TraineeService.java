@@ -52,4 +52,8 @@ public class TraineeService {
         trainees.forEach(trainee -> traineeResponseDTOS.add(new TraineeResponseDTO(trainee.getId(), trainee.getName())));
         return traineeResponseDTOS;
     }
+
+    public void updateGrouped(Long id) {
+        traineeRepository.updateGrouped(id);
+    }
 }
