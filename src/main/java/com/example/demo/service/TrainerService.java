@@ -28,7 +28,7 @@ public class TrainerService {
         Trainer trainer = new Trainer(
                 trainerIdSeq.incrementAndGet(),
                 trainerRequestDTO.getName(),
-                false);
+                false,null);
 
         trainerRepository.save(trainer);
         return trainer;

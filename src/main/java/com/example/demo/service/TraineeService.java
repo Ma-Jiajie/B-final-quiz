@@ -28,7 +28,7 @@ public class TraineeService {
         Trainee trainee = new Trainee(
                 traineeIdSeq.incrementAndGet(),
                 traineeRequestDTO.getName(),
-                false);
+                false,null);
 
         traineeRepository.save(trainee);
         return trainee;

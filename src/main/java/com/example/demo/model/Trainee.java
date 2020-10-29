@@ -1,10 +1,7 @@
 package com.example.demo.model;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -20,4 +17,7 @@ public class Trainee {
     @NotNull(message = "name should not be null")
     private String name;
     private Boolean grouped;
+
+    @ManyToOne
+    private Group group;
 }

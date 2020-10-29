@@ -1,12 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.controller.responsedto.GroupResponseDTO;
-import com.example.demo.controller.responsedto.TraineeResponseDTO;
-import com.example.demo.controller.responsedto.TrainerResponseDTO;
 import com.example.demo.exception.NotEnoughtTrainers;
 import com.example.demo.model.Group;
 import com.example.demo.model.Trainee;
 import com.example.demo.model.Trainer;
+import com.example.demo.repository.GroupRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,10 +19,12 @@ public class GroupService {
     private final AtomicLong traineeIdSeq = new AtomicLong();
     private final TraineeService traineeService;
     private final TrainerService trainerService;
+    private final GroupRepository groupRepository;
 
-    public GroupService(TraineeService traineeService, TrainerService trainerService) {
+    public GroupService(TraineeService traineeService, TrainerService trainerService, GroupRepository groupRepository) {
         this.traineeService = traineeService;
         this.trainerService = trainerService;
+        this.groupRepository = groupRepository;
     }
 
     public List<Group> getAllGroups() {
@@ -55,6 +56,7 @@ public class GroupService {
             traineeService.updateGrouped(trainees.get(traineeIndex).getId());
         }
 
+        for(Group group: groups) { groupRepository.save(group); }
         return groups;
     }
 
