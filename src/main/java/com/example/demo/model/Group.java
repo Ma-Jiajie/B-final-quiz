@@ -20,8 +20,10 @@ public class Group {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @Builder.Default
     private List<Trainer> trainers = new ArrayList<>();
     @OneToMany(cascade = CascadeType.ALL)
+    @Builder.Default
     private List<Trainee> trainees = new ArrayList<>();
 
     public Group(Long id, String name) {

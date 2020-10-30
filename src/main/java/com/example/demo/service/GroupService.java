@@ -34,6 +34,7 @@ public class GroupService {
     public Group[] separateGroups() {
         List<Trainer> trainers = trainerService.getAllTrainers();
         List<Trainee> trainees = traineeService.getAllTrainees();
+        // TODO GTB-完成度: - 有两个trainer时应当分组
         if(trainers.size() <= 2) throw new NotEnoughtTrainers("Trainers number is less than 2");
         int groupSize = trainers.size()/2;
         Group[] groups = new Group[groupSize];

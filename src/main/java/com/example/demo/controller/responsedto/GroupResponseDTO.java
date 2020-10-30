@@ -16,7 +16,9 @@ public class GroupResponseDTO {
     private Long id;
     @NotEmpty(message = "name should not be empty")
     private String name;
-
+    // TODO GTB-知识点: - 有默认值的情况，应使用Lombok的@Builder.Default
+    @Builder.Default
     private List<TrainerResponseDTO> trainers = new ArrayList<>();
+    @Builder.Default
     private List<TraineeResponseDTO> trainees = new ArrayList<>();
 }

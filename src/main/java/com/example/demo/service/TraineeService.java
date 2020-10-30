@@ -25,6 +25,7 @@ public class TraineeService {
     }
 
     public Trainee createTrainee(TraineeRequestDTO traineeRequestDTO) {
+        // TODO GTB-知识点: - Trainee的id会自动生成，无需指定
         Trainee trainee = new Trainee(
                 traineeIdSeq.incrementAndGet(),
                 traineeRequestDTO.getName(),
@@ -34,6 +35,7 @@ public class TraineeService {
         return trainee;
     }
 
+    // TODO GTB-工程实践: - 应使用驼峰命名，getTraineeById
     public Trainee getTraineeByid(Long id) {
         return traineeRepository.getOneById(id);
     }

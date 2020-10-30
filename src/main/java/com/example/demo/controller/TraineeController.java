@@ -14,8 +14,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/trainees")
+// TODO GTB-知识点: - @Validated注解使用不合理
 @Validated
 @CrossOrigin
+// TODO GTB-知识点: - CrossOrigin应指定特定域名
 public class TraineeController {
     private final TraineeService traineeService;
     public TraineeController(TraineeService traineeService){

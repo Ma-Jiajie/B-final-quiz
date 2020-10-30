@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TraineeRequestDTO {
-
+    // TODO GTB-知识点: - @NotEmpty注解已经包含@NotNull的语义
     @NotNull(message = "name should not be empty")
     @NotEmpty(message = "name should not be empty")
     private String name;
